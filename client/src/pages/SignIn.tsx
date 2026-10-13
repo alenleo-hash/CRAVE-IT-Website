@@ -1,0 +1,10 @@
+import { ArrowUpRight, CheckCircle2, LogOut } from "lucide-react";
+import { Link, useLocation } from "wouter";
+import { useAuth } from "@/_core/hooks/useAuth";
+import { startLogin } from "@/const";
+export default function SignIn() {
+  const [location] = useLocation();
+  const creating = location === "/sign-up";
+  const { user, loading, logout } = useAuth();
+  return <div className="page-wrap"><section className="sign-in-card"><div className="brand-mark"><svg viewBox="0 0 40 40" fill="none"><path d="M20 3.5 23.1 16.5 36.5 20l-13.4 3.5L20 36.5l-3.1-13L3.5 20l13.4-3.5L20 3.5Z" fill="currentColor"/><circle cx="20" cy="20" r="4.1" fill="#201c19"/></svg></div>{user ? <><CheckCircle2 size={19} style={{ color: "var(--sage)" }} /><h2>You’re at the table.</h2><p>Signed in as {user.name || user.email || "a CRAVE IT member"}. Your saved profile and favourites are attached to your account.</p><button className="secondary-button" onClick={() => void logout().then(() => window.location.assign("/"))}><LogOut size={14} /> Sign out</button></> : <><div className="eyebrow" style={{ justifyContent: "center", marginTop: 8 }}>{creating ? "Create your account" : "Your table, remembered"}</div><h2>{creating ? "Save a seat." : "Pick up where you left off."}</h2><p>{creating ? "Your recommendations are free to try as a guest. Sign in when you’re ready to keep your taste profile and favourites with you." : "Use your Manus account to keep your approved preferences and saved dishes linked to you."}</p><button className="primary-button" onClick={() => startLogin()} disabled={loading}>Continue with Manus <ArrowUpRight size={14} /></button><p className="field-hint" style={{ marginTop: 16 }}>Recommendations work without an account. Sign-in uses the site’s real account flow; no demo user is created.</p><div className="field-hint">{creating ? <>Already have an account? <Link href="/sign-in">Sign in</Link></> : <>New to CRAVE IT? <Link href="/sign-up">Create an account</Link></>}</div></>}</section></div>;
+}

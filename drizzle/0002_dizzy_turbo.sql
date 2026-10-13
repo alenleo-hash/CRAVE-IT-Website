@@ -1,0 +1,1 @@
+ALTER TABLE `food_feedback` MODIFY COLUMN `feedback` enum('love','not_for_me','too_expensive','too_spicy','similar') NOT NULL;

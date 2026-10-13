@@ -8,6 +8,20 @@
       "when": 1788785580464,
       "tag": "0000_initial_users",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1791865173585,
+      "tag": "0001_thin_multiple_man",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1791867943869,
+      "tag": "0002_dizzy_turbo",
+      "breakpoints": true
     }
   ]
 }
